@@ -33,6 +33,16 @@ function errorHanlder(err) {
 }
 
 /**
+ * Show help information.
+ */
+function helpCommand(msg) {
+    msg.reply(helpText);
+    return Promise.resolve();
+}
+helpCommand.command = 'help';
+helpCommand.helpText = Messages.helpText.help;
+
+/**
  * Get the status of the VM
  */
 function statusCommand(msg) {
@@ -43,7 +53,7 @@ function statusCommand(msg) {
                 msg.reply(Messages.failedToGetStatus);
             } else {
                 const status = determineVMStatus(vm);
-                msg.reply(status);
+                msg.reply(statusToMessage[status]);
             }
         });
 }
@@ -51,22 +61,48 @@ statusCommand.command = 'status';
 statusCommand.helpText = Messages.helpText.status;
 
 /**
- * Show help information.
+ * Start the VM
  */
-function helpCommand(msg) {
-    msg.reply(helpText);
-    return Promise.resolve();
-}
-helpCommand.command = 'help';
-helpCommand.helpText = Messages.helpText.help;
+function startCommand(msg) {
+    return AzureVM.getVMStatus()
+        .then(vm => {
+            if (!vm.instanceView) {
+                return Status.Unknown;
+            }
+            const status = determineVMStatus(vm);
+            return status;
+        })
+        .then(status => {
+            if (status !== Status.Stopped) {
+                msg.reply(Messages.cantStartInvalidStatus(status));
+                return;
+            }
 
-const allCommands = [helpCommand, statusCommand];
+            msg.reply(Messages.startingVM);
+            return AzureVM.startVM().then(() => {
+                msg.reply(Messages.doneStartingVM);
+            });
+        });
+}
+startCommand.command = 'start';
+startCommand.helpText = Messages.helpText.start;
+
+const allCommands = [helpCommand, statusCommand, startCommand];
 
 const helpText = `${Messages.helpGreeting}:\n\n`
     + allCommands.map(cmd => `**${cmd.command}**: ${cmd.helpText}`).join('\n');
 
 
 module.exports = { start };
+
+const Status = { Started: "started", Starting: "starting", Stopped: "stopped", Stopping: "stopping", Unknown: "unknown" };
+const statusToMessage = {
+    [Status.Started]: Messages.vmIsRunning,
+    [Status.Starting]: Messages.vmStartedRecently,
+    [Status.Stopped]: Messages.vmIsNotRunning,
+    [Status.Stopping]: Messages.vmIsStopping,
+    [Status.Unknown]: Messages.failedToGetStatus,
+};
 
 function determineVMStatus(vm) {
     const powerStatePrefix = 'PowerState';
@@ -76,7 +112,7 @@ function determineVMStatus(vm) {
 
     const powerStatus = statuses.find(s => s.code.startsWith(powerStatePrefix));
     if (!powerStatus) {
-        return Messages.failedToGetStatus;
+        return Status.Unknown;
     }
     const provisioningState = statuses.find(s => s.code.startsWith(provisioningStatePrefix));
 
@@ -87,28 +123,28 @@ function determineVMStatus(vm) {
         // If it has, might still need to wait a few minutes.
         case `${powerStatePrefix}/running`:
             if (!provisioningState) {
-                return Messages.vmIsRunning;
+                return Status.Started;
             }
             const now = Date.now();
             const startedAt = provisioningState.time.getTime();
             const diffMs = now - startedAt;
             if (diffMs >= 0 && diffMs < startupGracePeriodMs) {
-                return Messages.vmStartedRecently;
+                return Status.Starting;
             }
-            return Messages.vmIsRunning;
+            return Status.Started;
 
 
         case `${powerStatePrefix}/starting`:
-            return Messages.vmStartedRecently;
+            return Status.Starting;
 
         case `${powerStatePrefix}/deallocating`:
-            return Messages.vmIsStopping;
+            return Status.Stopping;
 
         case `${powerStatePrefix}/deallocated`:
-            return Messages.vmIsNotRunning;
+            return Status.Stopped;
 
         // Handle unknown states...
         default:
-            return Messages.defaultGetStatus(powerStatus.displayStatus || 'unknown');
+            return Status.Unknown;
     }
 }

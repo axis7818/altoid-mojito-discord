@@ -16,6 +16,12 @@ function getVMStatus() {
 
 function startVM() {
     console.log("Starting VM");
+    return getClient().then(computeClient => {
+        const rg = config['RESOURCE_GROUP'];
+        const vm = config['VM_NAME'];
+        console.log(`Starting Virtual Machine (rg=${rg}, vm=${vm})`);
+        return computeClient.virtualMachines.start(rg, vm);
+    });
 }
 
 function stopVM() {

@@ -10,10 +10,14 @@ module.exports = {
     vmStartedRecently: "AltoidMojito was recently started. It should be ready to connect at `altoidmojito.men` in a couple minutes!",
     vmIsNotRunning: "AltoidMojito is not running at the moment. Feel free to start it with the **start** command!",
     vmIsStopping: "AltoidMojito just stopped. Please wait a few minutes before starting it up again.",
-    defaultGetStatus: (displayStatus) => `I'm not quite sure, but it looks like AltoidMojito is in this state: **${displayStatus}**`,
+
+    startingVM: "Ok, I'll start AltoidMojito! Please be sure to stop it when you are done.",
+    doneStartingVM: "I just started AltoidMojito. It should be ready to connect at `altoidmojito.men` in a couple minutes!",
+    cantStartInvalidStatus: (status) => `AltoidMojito cannot be started right now because it is **${status}**`,
 
     helpText: {
         status: "Shows the current status of AltoidMojito",
+        start: "Start AltoidMojito",
         help: "Shows this help message",
     },
 };
