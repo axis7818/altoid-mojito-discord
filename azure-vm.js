@@ -3,7 +3,7 @@ const process = require('process');
 const ComputeManagementClient = require('azure-arm-compute');
 
 function getVMStatus() {
-    console.log("== Status ===========================");
+    console.log("Getting VM status");
     const config = getConfig();
 
     return getClient().then(computeClient => {

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A discord bot for managing the AltoidMojito Minecraft server.",
   "scripts": {
-    "start": "nodemon --inspect index.js"
+    "start": "nodemon --inspect index.js",
+    "docker:build": "./scripts/docker-build.sh",
+    "docker:push": "./scripts/docker-push.sh"
   },
   "author": "axis7818@gmail.com",
   "license": "ISC",
