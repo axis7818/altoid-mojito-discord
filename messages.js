@@ -1,8 +1,11 @@
 
+const prefix = ['altoidmojito', 'altoid', 'mojito', 'altmoj'];
+
 module.exports = {
+    prefix,
 
     fallbackErrorMessage: "❌ Uhoh... Something went wrong...",
-    helpGreeting: "👋 Hi! I am the AltoidMojito discord bot. I respond to the following commands",
+    helpGreeting: `👋 Hi! I am the AltoidMojito discord bot. I respond to the following commands after the prefix '${prefix[0]}'`,
 
     letMeCheckStatus: "⏱ Let me see if AltoidMojito is running. One sec...",
     failedToGetStatus: "🤔 Sorry, I cannot determine the status of the AltoidMojito server...",

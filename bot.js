@@ -3,6 +3,10 @@ const AzureVM = require('./azure-vm');
 const Messages = require('./messages');
 const roll4Chub = require('./roll4chub');
 
+function isPrefix(x) {
+    return !!Messages.prefix.find(p => p === x.trim().toLowerCase());
+}
+
 function start(TOKEN) {
     const client = new Discord.Client();
 
@@ -11,14 +15,22 @@ function start(TOKEN) {
     });
 
     client.on('message', msg => {
-        if (!msg.author.bot) {
-            const cmd = msg.content.split(/\s/)[0].toLowerCase();
-            const c = allCommands.find(c => c.command === cmd) || helpCommand;
-            try {
-                c(msg).catch(errorHanlder);
-            } catch (err) {
-                errorHanlder(err);
-            }
+        if (msg.author.bot) {
+            return;
+        }
+        const parts = msg.content.split(/\s/);
+        if (parts.length < 2) {
+            return;
+        }
+        if (!isPrefix(parts[0])) {
+            return;
+        }
+        const cmd = parts[1].toLowerCase();
+        const c = allCommands.find(c => c.command === cmd) || helpCommand;
+        try {
+            c(msg).catch(errorHanlder);
+        } catch (err) {
+            errorHanlder(err);
         }
     });
 
