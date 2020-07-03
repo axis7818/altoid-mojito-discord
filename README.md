@@ -1,5 +1,7 @@
 # AltoidMojito
 
+![altoid mojito](./icon.png)
+
 A discord bot for managing the AltoidMojito Minecraft server.
 
 ## Getting Started
