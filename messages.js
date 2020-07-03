@@ -15,9 +15,14 @@ module.exports = {
     doneStartingVM: "I just started AltoidMojito. It should be ready to connect at `altoidmojito.men` in a couple minutes!",
     cantStartInvalidStatus: (status) => `AltoidMojito cannot be started right now because it is **${status}**`,
 
+    stoppingVM: "Ok, I'll stop AltoidMojito.",
+    doneStoppingVM: "I just stopped AltoidMojito. See ya later!",
+    cantStopInvalidStatus: (status) => `AltoidMojito cannot be stopped right now because it is **${status}**`,
+
     helpText: {
         status: "Shows the current status of AltoidMojito",
-        start: "Start AltoidMojito",
+        start: "Start AltoidMojito. This can only be done if AltoidMojito is stopped.",
+        stop: "Stop AltoidMojito. This can only be done if AltoidMojito is started.",
         help: "Shows this help message",
     },
 };

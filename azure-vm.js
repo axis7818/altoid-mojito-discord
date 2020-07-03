@@ -26,7 +26,12 @@ function startVM() {
 
 function stopVM() {
     console.log("Stopping VM");
-
+    return getClient().then(computeClient => {
+        const rg = config['RESOURCE_GROUP'];
+        const vm = config['VM_NAME'];
+        console.log(`Stopping Virtual Machine (rg=${rg}, vm=${vm})`);
+        return computeClient.virtualMachines.deallocate(rg, vm);
+    });
 }
 
 // lazy load & cache
@@ -80,7 +85,7 @@ function getClient() {
                 }
                 else {
                     console.log("Creating ComputeManagementClient");
-                    const computeClient = new ComputeManagementClient(credentials, config['SUBSCRIPTION_ID']);
+                    computeClient = new ComputeManagementClient(credentials, config['SUBSCRIPTION_ID']);
                     resolve(computeClient);
                 }
             },

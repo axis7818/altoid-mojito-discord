@@ -11,8 +11,6 @@ function start(TOKEN) {
 
     client.on('message', msg => {
         if (!msg.author.bot) {
-            console.log(`Received message: ${msg.content.substr(0, 24)}`);
-
             const cmd = msg.content.split(/\s/)[0].toLowerCase();
             const c = allCommands.find(c => c.command === cmd) || helpCommand;
             try {
@@ -21,7 +19,6 @@ function start(TOKEN) {
                 errorHanlder(err);
             }
         }
-
     });
 
     client.login(TOKEN);
@@ -48,14 +45,8 @@ helpCommand.helpText = Messages.helpText.help;
 function statusCommand(msg) {
     msg.reply(Messages.letMeCheckStatus);
     return AzureVM.getVMStatus()
-        .then(vm => {
-            if (!vm.instanceView) {
-                msg.reply(Messages.failedToGetStatus);
-            } else {
-                const status = determineVMStatus(vm);
-                msg.reply(statusToMessage[status]);
-            }
-        });
+        .then(determineVMStatus)
+        .then(s => msg.reply(statusToMessage[s]));
 }
 statusCommand.command = 'status';
 statusCommand.helpText = Messages.helpText.status;
@@ -65,13 +56,7 @@ statusCommand.helpText = Messages.helpText.status;
  */
 function startCommand(msg) {
     return AzureVM.getVMStatus()
-        .then(vm => {
-            if (!vm.instanceView) {
-                return Status.Unknown;
-            }
-            const status = determineVMStatus(vm);
-            return status;
-        })
+        .then(determineVMStatus)
         .then(status => {
             if (status !== Status.Stopped) {
                 msg.reply(Messages.cantStartInvalidStatus(status));
@@ -87,7 +72,26 @@ function startCommand(msg) {
 startCommand.command = 'start';
 startCommand.helpText = Messages.helpText.start;
 
-const allCommands = [helpCommand, statusCommand, startCommand];
+function stopCommand(msg) {
+    return AzureVM.getVMStatus()
+        .then(determineVMStatus)
+        .then(status => {
+            if (status !== Status.Started) {
+                msg.reply(Messages.cantStopInvalidStatus(status));
+                return;
+            }
+
+            msg.reply(Messages.stoppingVM);
+            return AzureVM.stopVM().then(() => {
+                msg.reply(Messages.doneStoppingVM);
+            });
+        });
+
+}
+stopCommand.command = 'stop';
+stopCommand.helpText = Messages.helpText.stop;
+
+const allCommands = [helpCommand, statusCommand, startCommand, stopCommand];
 
 const helpText = `${Messages.helpGreeting}:\n\n`
     + allCommands.map(cmd => `**${cmd.command}**: ${cmd.helpText}`).join('\n');
@@ -105,6 +109,11 @@ const statusToMessage = {
 };
 
 function determineVMStatus(vm) {
+    console.log("Determining the VM status");
+    if (!vm.instanceView && !vm.instanceView.statuses) {
+        return Status.Unknown;
+    }
+
     const powerStatePrefix = 'PowerState';
     const provisioningStatePrefix = 'ProvisioningState';
     const startupGracePeriodMs = 3 * 60 * 1000;
@@ -116,7 +125,6 @@ function determineVMStatus(vm) {
     }
     const provisioningState = statuses.find(s => s.code.startsWith(provisioningStatePrefix));
 
-    console.log(powerStatus);
     switch (powerStatus.code) {
 
         // When running, check if it has recently started.
@@ -145,6 +153,7 @@ function determineVMStatus(vm) {
 
         // Handle unknown states...
         default:
+            console.warn(`Unknown status`, powerStatus);
             return Status.Unknown;
     }
 }
