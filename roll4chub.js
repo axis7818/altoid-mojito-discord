@@ -6,7 +6,7 @@ function roll4ChubCommand(msg) {
         chub = rollBothDice();
     }
 
-    msg.reply(`<@${msg.author.id}>, your chub is ${chub}.`);
+    msg.reply(`Your chub is ${chub}.`);
     return Promise.resolve();
 }
 roll4ChubCommand.command = 'roll4chub';
