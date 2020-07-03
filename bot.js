@@ -92,7 +92,8 @@ function stopCommand(msg) {
 stopCommand.command = 'stop';
 stopCommand.helpText = Messages.helpText.stop;
 
-const allCommands = [helpCommand, statusCommand, startCommand, stopCommand, roll4Chub.roll4ChubCommand];
+const allCommands = [helpCommand, statusCommand, startCommand, stopCommand, roll4Chub.roll4ChubCommand]
+    .filter(x => !x.disabled);
 
 const helpText = `${Messages.helpGreeting}:\n\n`
     + allCommands
