@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const AzureVM = require('./azure-vm');
 const Messages = require('./messages');
+const roll4Chub = require('./roll4chub');
 
 function start(TOKEN) {
     const client = new Discord.Client();
@@ -91,11 +92,12 @@ function stopCommand(msg) {
 stopCommand.command = 'stop';
 stopCommand.helpText = Messages.helpText.stop;
 
-const allCommands = [helpCommand, statusCommand, startCommand, stopCommand];
+const allCommands = [helpCommand, statusCommand, startCommand, stopCommand, roll4Chub.roll4ChubCommand];
 
 const helpText = `${Messages.helpGreeting}:\n\n`
-    + allCommands.map(cmd => `**${cmd.command}**: ${cmd.helpText}`).join('\n');
-
+    + allCommands
+        .filter(cmd => !cmd.hidden)
+        .map(cmd => `**${cmd.command}**: ${cmd.helpText}`).join('\n');
 
 module.exports = { start };
 
