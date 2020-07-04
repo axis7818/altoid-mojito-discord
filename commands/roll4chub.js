@@ -7,7 +7,6 @@ function roll4ChubCommand(msg) {
     }
 
     msg.reply(`Your chub is ${chub}.`);
-    return Promise.resolve();
 }
 roll4ChubCommand.command = 'roll4chub';
 roll4ChubCommand.hidden = true;

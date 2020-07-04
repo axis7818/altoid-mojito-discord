@@ -2,11 +2,12 @@ const Discord = require('discord.js');
 const Messages = require('./commands/utils/messages');
 const package = require('./package.json');
 
-const helpCommand = require('./commands/help');
 require('./commands/status');
 require('./commands/start');
 require('./commands/stop');
 require('./commands/roll4chub');
+const helpCommand = require('./commands/help');
+require('./commands/version');
 
 function start(TOKEN) {
     const client = new Discord.Client();
@@ -32,7 +33,10 @@ function start(TOKEN) {
         const cmd = parts[1].toLowerCase();
         const c = commands.find(c => c.command === cmd) || helpCommand;
         try {
-            c(msg).catch(errorHanlder);
+            const result = c(msg)
+            if (result) {
+                result.catch(errorHanlder);
+            }
         } catch (err) {
             errorHanlder(err);
         }

@@ -5,7 +5,6 @@ const Messages = require('./utils/messages');
  */
 function helpCommand(msg) {
     msg.reply(helpText());
-    return Promise.resolve();
 }
 helpCommand.command = 'help';
 helpCommand.helpText = Messages.helpText.help;

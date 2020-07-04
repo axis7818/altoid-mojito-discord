@@ -22,10 +22,13 @@ module.exports = {
     doneStoppingVM: "✌️ I just stopped AltoidMojito. See ya later!",
     cantStopInvalidStatus: (status) => `⌛ AltoidMojito cannot be stopped right now because it is **${status}**`,
 
+    showVersion: (v) => `⚙️ My current version is ${v}`,
+
     helpText: {
         status: "Shows the current status of AltoidMojito",
         start: "Start AltoidMojito. This can only be done if AltoidMojito is stopped.",
         stop: "Stop AltoidMojito. This can only be done if AltoidMojito is started.",
         help: "Shows this help message",
+        version: "Shows the bot version number",
     },
 };
