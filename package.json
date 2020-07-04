@@ -1,11 +1,12 @@
 {
   "name": "altoidmojito",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A discord bot for managing the AltoidMojito Minecraft server.",
   "scripts": {
     "start": "nodemon --inspect index.js",
     "docker:build": "./scripts/docker-build.sh",
-    "docker:push": "./scripts/docker-push.sh"
+    "docker:push": "./scripts/docker-push.sh",
+    "deploy": "./scripts/docker-build.sh && ./scripts/docker-push.sh && az container restart -g direwolf-server -n altoid-mojito-discord"
   },
   "author": "axis7818@gmail.com",
   "license": "ISC",

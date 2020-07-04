@@ -4,6 +4,6 @@ WORKDIR /app/
 COPY package* ./
 RUN npm install
 
-COPY * ./
+COPY . .
 
 ENTRYPOINT ["node", "index.js"]
