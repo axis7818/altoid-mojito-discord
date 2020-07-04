@@ -1,4 +1,4 @@
-const Messages = require('../messages');
+const Messages = require('./utils/messages');
 
 /**
  * Show help information.

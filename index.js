@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const process = require('process');
 const bot = require('./bot');
-const AzureVM = require('./azure-vm');
+const AzureVM = require('./commands/utils/azure-vm');
 
 /** Entry point for the program */
 function main() {

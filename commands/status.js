@@ -1,6 +1,5 @@
-const AzureVM = require('../azure-vm');
-const Messages = require('../messages');
-const vmUtils = require('./utils/vm-utils');
+const AzureVM = require('./utils/azure-vm');
+const Messages = require('./utils/messages');
 
 /**
  * Get the status of the VM
@@ -8,8 +7,8 @@ const vmUtils = require('./utils/vm-utils');
 function statusCommand(msg) {
     msg.reply(Messages.letMeCheckStatus);
     return AzureVM.getVMStatus()
-        .then(vmUtils.determineVMStatus)
-        .then(s => msg.reply(vmUtils.statusToMessage[s]));
+        .then(AzureVM.determineVMStatus)
+        .then(s => msg.reply(AzureVM.statusToMessage[s]));
 }
 statusCommand.command = 'status';
 statusCommand.helpText = Messages.helpText.status;

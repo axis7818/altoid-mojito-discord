@@ -1,12 +1,11 @@
-const AzureVM = require('../azure-vm');
-const Messages = require('../messages');
-const vmUtils = require('./utils/vm-utils');
+const AzureVM = require('./utils/azure-vm');
+const Messages = require('./utils/messages');
 
 function stopCommand(msg) {
     return AzureVM.getVMStatus()
-        .then(vmUtils.determineVMStatus)
+        .then(AzureVM.determineVMStatus)
         .then(status => {
-            if (status !== vmUtils.Status.Started) {
+            if (status !== AzureVM.Status.Started) {
                 msg.reply(Messages.cantStopInvalidStatus(status));
                 return;
             }
