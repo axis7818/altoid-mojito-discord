@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const AzureVM = require('./azure-vm');
 const Messages = require('./messages');
 const roll4Chub = require('./roll4chub');
+const package = require('./package.json');
 
 function isPrefix(x) {
     return !!Messages.prefix.find(p => p === x.trim().toLowerCase());
@@ -11,6 +12,7 @@ function start(TOKEN) {
     const client = new Discord.Client();
 
     client.on('ready', () => {
+        console.log(`AltoidMojito Discord Bot (version=${package.version})`)
         console.log(`Logged in as ${client.user.tag}!`);
     });
 
