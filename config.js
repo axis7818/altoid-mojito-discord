@@ -7,6 +7,7 @@ const config = {
     // Discord Bot
     TOKEN: null,
     CLIENT_ID: null,
+    SERVER_NAME: null,
 
     // Azure
     AZURE: {

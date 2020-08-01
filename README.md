@@ -22,6 +22,7 @@ Create a .env file at the root of the project and add the following environment 
 ```sh
 ALTOIDMOJITO_CLIENT_ID='<discord bot client id>'
 ALTOIDMOJITO_TOKEN='<discord bot token>'
+ALTOIDMOJITO_SERVER_NAME='<human readable server name>'
 ALTOIDMOJITO_AZURE_SUBSCRIPTION_ID='<azure subscription id>'
 ALTOIDMOJITO_AZURE_CLIENT_ID='<azure client id>'
 ALTOIDMOJITO_AZURE_APPLICATION_SECRET='<azure application secret>'
