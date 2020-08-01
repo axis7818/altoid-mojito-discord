@@ -15,7 +15,7 @@ describe(roll4chub.name, function () {
             roll4chub(mockMsg);
             expect(mockMsg.reply.mock.calls).toHaveLength(1);
             const call = mockMsg.reply.mock.calls[0];
-            expect(call[0]).toMatch(/^Your chub is ([1-9][0-9]{0,1})\.$/);
+            expect(call[0]).toMatch(/^Your chub is ([1-9][0-9]?|100)\.$/);
         }
     });
 
