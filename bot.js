@@ -43,6 +43,10 @@ function start(TOKEN) {
     });
 
     client.login(TOKEN);
+
+    // TODO: start polling the server
+    // If it has been running for 12 hours, and no one is logged in,
+    // Then send a message to Cameron
 }
 
 module.exports = { start };
