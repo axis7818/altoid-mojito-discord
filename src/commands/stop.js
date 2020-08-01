@@ -3,8 +3,7 @@ const MinecraftServer = require('../services/minecraft-server');
 const Messages = require('./../messages');
 
 async function stopCommand(msg) {
-    const vmStatus = await AzureVM.getVMStatus()
-        .then(AzureVM.determineVMStatus);
+    const vmStatus = await AzureVM.getVMStatus();
 
     if (vmStatus !== AzureVM.Status.Started) {
         msg.reply(Messages.cantStopInvalidStatus(vmStatus));

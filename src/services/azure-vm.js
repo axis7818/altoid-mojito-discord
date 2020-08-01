@@ -2,16 +2,18 @@ const msRestAzure = require('ms-rest-azure');
 const ComputeManagementClient = require('azure-arm-compute');
 const botConfig = require('../config');
 
-function getVMStatus() {
+async function getVMStatus() {
     console.log("Getting VM status");
     const config = getConfig();
 
-    return getClient().then(computeClient => {
+    const vm = await getClient().then(computeClient => {
         const rg = config['RESOURCE_GROUP'];
         const vm = config['VM_NAME'];
         console.log(`Getting Virtual Machine Information (rg=${rg}, vm=${vm})`);
         return computeClient.virtualMachines.get(rg, vm, { expand: 'instanceView' });
     });
+
+    return determineVMStatus(vm);
 }
 
 function startVM() {
@@ -39,11 +41,6 @@ let config = null;
 function getConfig() {
     if (config === null) {
         config = botConfig.AZURE;
-        for (const { key, value } of Object.entries(config)) {
-            if (key && !value) {
-                throw new Error(`The Azure configuration field ${key} is required.`);
-            }
-        }
     }
     return config;
 }
@@ -79,42 +76,32 @@ function getClient() {
 
 const Status = { Started: "started", Starting: "starting", Stopped: "stopped", Stopping: "stopping", Unknown: "unknown" };
 
+const PowerStatePrefix = 'PowerState';
+const PowerStateToStatus = {
+    [`${PowerStatePrefix}/running`]: Status.Started,
+    [`${PowerStatePrefix}/starting`]: Status.Starting,
+    [`${PowerStatePrefix}/deallocating`]: Status.Stopping,
+    [`${PowerStatePrefix}/deallocated`]: Status.Stopped,
+};
+
 function determineVMStatus(vm) {
     console.log("Determining the VM status");
-    if (!vm.instanceView && !vm.instanceView.statuses) {
+    if (!vm.instanceView || !vm.instanceView.statuses) {
         return Status.Unknown;
     }
 
-    const powerStatePrefix = 'PowerState';
     const statuses = vm.instanceView.statuses;
 
-    const powerStatus = statuses.find(s => s.code.startsWith(powerStatePrefix));
+    const powerStatus = statuses.find(s => s.code.startsWith(PowerStatePrefix));
     if (!powerStatus) {
         return Status.Unknown;
     }
 
-    switch (powerStatus.code) {
-
-        // When running, check if it has recently started.
-        // If it has, might still need to wait a few minutes.
-        case `${powerStatePrefix}/running`:
-            return Status.Started;
-
-
-        case `${powerStatePrefix}/starting`:
-            return Status.Starting;
-
-        case `${powerStatePrefix}/deallocating`:
-            return Status.Stopping;
-
-        case `${powerStatePrefix}/deallocated`:
-            return Status.Stopped;
-
-        // Handle unknown states...
-        default:
-            console.warn(`Unknown status`, powerStatus);
-            return Status.Unknown;
+    const result = PowerStateToStatus[powerStatus.code] || Status.Unknown;
+    if (result === Status.Unknown) {
+        console.warn(`Unknown status`, powerStatus);
     }
+    return result;
 }
 
-module.exports = { getVMStatus, startVM, stopVM, getConfig, determineVMStatus, Status };
+module.exports = { getVMStatus, startVM, stopVM, Status };
