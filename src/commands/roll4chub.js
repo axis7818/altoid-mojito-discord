@@ -11,7 +11,6 @@ function roll4ChubCommand(msg) {
 }
 roll4ChubCommand.command = 'roll4chub';
 roll4ChubCommand.hidden = true;
-roll4ChubCommand.disabled = false;
 
 module.exports = roll4ChubCommand;
 

@@ -4,6 +4,7 @@
   "description": "A discord bot for managing the AltoidMojito Minecraft server.",
   "scripts": {
     "start": "nodemon --inspect src/index.js",
+    "test": "jest --silent",
     "docker:build": "./scripts/docker-build.sh",
     "docker:push": "./scripts/docker-push.sh",
     "deploy": "./scripts/docker-build.sh && ./scripts/docker-push.sh && az container restart -g direwolf-server -n altoid-mojito-discord"
