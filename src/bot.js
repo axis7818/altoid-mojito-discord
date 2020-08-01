@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const Messages = require('./messages');
-const package = require('./package.json');
+const package = require('../package.json');
 
 require('./commands/status');
 require('./commands/start');

@@ -1,6 +1,6 @@
 const AzureVM = require('../services/azure-vm');
 const MinecraftServer = require('../services/minecraft-server');
-const Messages = require('../messages');
+const Messages = require('./../messages');
 
 async function stopCommand(msg) {
     const vmStatus = await AzureVM.getVMStatus()
