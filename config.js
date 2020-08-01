@@ -5,23 +5,23 @@ const prefix = 'ALTOIDMOJITO';
 const config = {
 
     // Discord Bot
-    TOKEN: '',
-    CLIENT_ID: '',
+    TOKEN: null,
+    CLIENT_ID: null,
 
     // Azure
     AZURE: {
-        SUBSCRIPTION_ID: '',
-        CLIENT_ID: '',
-        APPLICATION_SECRET: '',
-        DOMAIN: '',
-        RESOURCE_GROUP: '',
-        VM_NAME: '',
+        SUBSCRIPTION_ID: null,
+        CLIENT_ID: null,
+        APPLICATION_SECRET: null,
+        DOMAIN: null,
+        RESOURCE_GROUP: null,
+        VM_NAME: null,
     },
 
     // Minecraft
     MINECRAFT: {
-        SERVER_URL: '',
-        SERVER_PORT: '',
+        SERVER_URL: null,
+        SERVER_PORT: '25565',
     },
 
 };
@@ -37,6 +37,8 @@ function parseConfig(config, prefix) {
             const value = process.env[`${prefix}_${key}`];
             if (value) {
                 config[key] = value;
+            } else if (config[key] === null) {
+                throw new Error(`Missing configuration value. ${prefix}_${key} is required.`);
             }
         }
     }

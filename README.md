@@ -28,6 +28,8 @@ ALTOIDMOJITO_AZURE_APPLICATION_SECRET='<azure application secret>'
 ALTOIDMOJITO_AZURE_DOMAIN='<azure domain>'
 ALTOIDMOJITO_AZURE_RESOURCE_GROUP='<resource group name>'
 ALTOIDMOJITO_AZURE_VM_NAME='<vm name>'
+ALTOIDMOJITO_MINECRAFT_SERVER_URL='<minecraft server hostname>'
+ALTOIDMOJITO_MINECRAFT_SERVER_PORT='<minecraft server port>' # Defaults to 25565
 ```
 
 ### How To Get Values For Environment Variables
