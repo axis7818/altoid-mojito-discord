@@ -10,7 +10,7 @@ helpCommand.command = 'help';
 helpCommand.helpText = Messages.helpText.help;
 
 const helpText = () => {
-    const allCommands = require('./all').commands;
+    const allCommands = require('./all');
     return `${Messages.helpGreeting}:\n\n`
         + allCommands
             .filter(cmd => !cmd.hidden)
@@ -18,4 +18,3 @@ const helpText = () => {
 };
 
 module.exports = helpCommand;
-require('./all').registerCommand(helpCommand);

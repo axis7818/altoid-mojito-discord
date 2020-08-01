@@ -1,8 +1,11 @@
 
-const commands = [];
+const commands = [
+    require('./help'),
+    require('./version'),
+    require('./start'),
+    require('./status'),
+    require('./stop'),
+    require('./roll4chub'),
+];
 
-function registerCommand(c) {
-    commands.push(c);
-}
-
-module.exports = { commands, registerCommand };
+module.exports = commands;

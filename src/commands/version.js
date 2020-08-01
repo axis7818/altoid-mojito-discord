@@ -8,4 +8,3 @@ versionCommand.command = 'version';
 versionCommand.helpText = Messages.helpText.version;
 
 module.exports = versionCommand;
-require('./all').registerCommand(versionCommand);

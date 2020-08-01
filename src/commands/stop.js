@@ -26,4 +26,3 @@ stopCommand.command = 'stop';
 stopCommand.helpText = Messages.helpText.stop;
 
 module.exports = stopCommand;
-require('./all').registerCommand(stopCommand);

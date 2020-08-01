@@ -14,7 +14,6 @@ roll4ChubCommand.hidden = true;
 roll4ChubCommand.disabled = false;
 
 module.exports = roll4ChubCommand;
-require('./all').registerCommand(roll4ChubCommand);
 
 const min = 0;
 const max = 9;

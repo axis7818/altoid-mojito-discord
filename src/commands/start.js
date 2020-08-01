@@ -23,4 +23,3 @@ startCommand.command = 'start';
 startCommand.helpText = Messages.helpText.start;
 
 module.exports = startCommand;
-require('./all').registerCommand(startCommand);

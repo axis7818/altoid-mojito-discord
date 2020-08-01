@@ -34,4 +34,3 @@ statusCommand.command = 'status';
 statusCommand.helpText = Messages.helpText.status;
 
 module.exports = statusCommand;
-require('./all').registerCommand(statusCommand);
