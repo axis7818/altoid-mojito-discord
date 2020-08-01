@@ -37,9 +37,12 @@ ALTOIDMOJITO_MINECRAFT_SERVER_PORT='<minecraft server port>' # Defaults to 25565
 
 - **ALTOIDMOJITO_CLIENT_ID**: Discord Application Client ID. This can be found on the "General Information" page for the relevant [discord application](https://discord.com/developers/applications).
 - **ALTOIDMOJITO_TOKEN**: Discord bot token. This can be found on the Application's Bot page.
+- **ALTOIDMOJITO_SERVER_NAME**: A display name for the minecraft server. This can be whatever you want.
 - **ALTOIDMOJITO_AZURE_SUBSCRIPTION_ID**: The Azure Subscription ID where the minecraft server lives.
 - **ALTOIDMOJITO_AZURE_CLIENT_ID**: The Azure Client ID for the service principal the bot will use. This service principal needs the proper Azure roles granted.
 - **ALTOIDMOJITO_AZURE_APPLICATION_SECRET**: The application secret for the service principal above.
 - **ALTOIDMOJITO_AZURE_DOMAIN**: The Azure tenant where the service principal lives.
 - **ALTOIDMOJITO_AZURE_RESOURCE_GROUP**: The resource group containing the Minecraft VM.
 - **ALTOIDMOJITO_AZURE_VM_NAME**: The name of the VM running the minecraft server.
+- **ALTOIDMOJITO_MINECRAFT_SERVER_URL**: The hostname for the minecraft server. This is what players would use to log in. Contact the server administrator for this value.
+- **ALTOIDMOJITO_MINECRAFT_SERVER_PORT**: Optional override. Contact the server administrator for this value.
