@@ -1,7 +1,7 @@
 const Messages = require('../messages');
 const msRestAzure = require('ms-rest-azure');
-const process = require('process');
 const ComputeManagementClient = require('azure-arm-compute');
+const botConfig = require('../config');
 
 function getVMStatus() {
     console.log("Getting VM status");
@@ -38,30 +38,14 @@ function stopVM() {
 // lazy load & cache
 let config = null;
 function getConfig() {
-
     if (config === null) {
-        const prefix = 'ALTOIDMOJITO_AZURE_';
-        const variables = [
-            'SUBSCRIPTION_ID',
-            'CLIENT_ID',
-            'APPLICATION_SECRET',
-            'DOMAIN',
-            'RESOURCE_GROUP',
-            'VM_NAME',
-        ]
-
-        config = {};
-        variables.forEach(v => {
-            const envVar = `${prefix}${v}`;
-            const value = process.env[envVar];
-            if (!value) {
-                throw new Error(`The environment variable ${envVar} is required.`);
+        config = botConfig.AZURE;
+        for (const { key, value } of Object.entries(config)) {
+            if (key && !value) {
+                throw new Error(`The Azure configuration field ${key} is required.`);
             }
-            config[v] = value;
-        });
-
+        }
     }
-
     return config;
 }
 
