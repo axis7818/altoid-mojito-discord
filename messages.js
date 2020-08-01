@@ -11,7 +11,7 @@ module.exports = {
     letMeCheckStatus: `⏱ Let me see if ${config.SERVER_NAME} is running. One sec...`,
     failedToGetStatus: `🤔 Sorry, I cannot determine the status of the ${config.SERVER_NAME} server...`,
     vmIsNotRunning: `💤 ${config.SERVER_NAME} is not running at the moment. Feel free to start it with the **start** command!`,
-    vmIsStopping: `🟡 ${config.SERVER_NAME} just stopped. Please wait a few minutes before starting it up again.`,
+    vmIsStopping: `🟡 ${config.SERVER_NAME} is stopping. Please wait a few minutes before starting it up again.`,
     vmStartedRecently: `⏱ ${config.SERVER_NAME} was recently started. It should be ready to connect at ${config.MINECRAFT.SERVER_URL} in a couple minutes!`,
     vmIsRunning: `👃 The ${config.SERVER_NAME} VM has started, let me make sure it is ready to join...`,
     serverIsRunning: (serverStatus) => {
@@ -26,6 +26,7 @@ module.exports = {
     stoppingVM: `🚧 Ok, I'll stop ${config.SERVER_NAME}.`,
     doneStoppingVM: `✌️ I just stopped ${config.SERVER_NAME}. See ya later!`,
     cantStopInvalidStatus: (status) => `⌛ ${config.SERVER_NAME} cannot be stopped right now because it is **${status}**`,
+    cantStopPeopleArePlaying: (serverStatus) => `🐿 Looks like there are ${serverStatus.players} hooligan(s) playing, it isn't polite to stop ${config.SERVER_NAME} while others are using it.`,
 
     showVersion: (v) => `⚙️ My current version is ${v}`,
 
