@@ -1,4 +1,4 @@
-const Messages = require('./messages');
+const Messages = require('../messages');
 const msRestAzure = require('ms-rest-azure');
 const process = require('process');
 const ComputeManagementClient = require('azure-arm-compute');

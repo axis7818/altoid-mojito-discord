@@ -1,5 +1,5 @@
-const AzureVM = require('./utils/azure-vm');
-const Messages = require('./utils/messages');
+const AzureVM = require('../services/azure-vm');
+const Messages = require('../messages');
 
 /**
  * Start the VM

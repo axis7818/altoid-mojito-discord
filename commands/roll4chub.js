@@ -6,6 +6,7 @@ function roll4ChubCommand(msg) {
         chub = rollBothDice();
     }
 
+    console.log(`${msg.author.username}'s chub is ${chub}`);
     msg.reply(`Your chub is ${chub}.`);
 }
 roll4ChubCommand.command = 'roll4chub';
