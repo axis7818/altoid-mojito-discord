@@ -1,22 +1,15 @@
 const Discord = require('discord.js');
 const Messages = require('./messages');
-const package = require('./package.json');
-
-require('./commands/status');
-require('./commands/start');
-require('./commands/stop');
-require('./commands/roll4chub');
+const package = require('../package.json');
 const helpCommand = require('./commands/help');
-require('./commands/version');
+const commands = require('./commands/all');
 
 function start(TOKEN) {
     const client = new Discord.Client();
-    let commands = [];
 
     client.on('ready', () => {
         console.log(`AltoidMojito Discord Bot (version=${package.version})`)
         console.log(`Logged in as ${client.user.tag}!`);
-        commands = require('./commands/all').commands;
     });
 
     client.on('message', msg => {

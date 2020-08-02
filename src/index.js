@@ -15,9 +15,6 @@ function main() {
         process.exit(1);
     }
 
-    // Make sure Azure configuration is provided.
-    AzureVM.getConfig();
-
     // Start the bot
     bot.start(TOKEN);
 

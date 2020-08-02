@@ -1,10 +1,9 @@
 const AzureVM = require('../services/azure-vm');
 const MinecraftServer = require('../services/minecraft-server');
-const Messages = require('../messages');
+const Messages = require('./../messages');
 
 async function stopCommand(msg) {
-    const vmStatus = await AzureVM.getVMStatus()
-        .then(AzureVM.determineVMStatus);
+    const vmStatus = await AzureVM.getVMStatus();
 
     if (vmStatus !== AzureVM.Status.Started) {
         msg.reply(Messages.cantStopInvalidStatus(vmStatus));
@@ -26,4 +25,3 @@ stopCommand.command = 'stop';
 stopCommand.helpText = Messages.helpText.stop;
 
 module.exports = stopCommand;
-require('./all').registerCommand(stopCommand);

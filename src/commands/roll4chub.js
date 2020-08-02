@@ -11,10 +11,8 @@ function roll4ChubCommand(msg) {
 }
 roll4ChubCommand.command = 'roll4chub';
 roll4ChubCommand.hidden = true;
-roll4ChubCommand.disabled = false;
 
 module.exports = roll4ChubCommand;
-require('./all').registerCommand(roll4ChubCommand);
 
 const min = 0;
 const max = 9;
@@ -23,8 +21,8 @@ function rollOneDice() {
 }
 
 function rollBothDice() {
-    let dice1 = 10 * rollOneDice();
-    let dice2 = rollOneDice();
-    let result = dice1 === 0 && dice2 === 0 ? 100 : dice1 + dice2;
+    const dice1 = 10 * rollOneDice();
+    const dice2 = rollOneDice();
+    const result = dice1 === 0 && dice2 === 0 ? 100 : dice1 + dice2;
     return result;
 }

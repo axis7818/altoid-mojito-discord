@@ -14,8 +14,7 @@ const vmNotStartedResponses = {
  */
 async function statusCommand(msg) {
     msg.reply(Messages.letMeCheckStatus);
-    const vmStatus = await AzureVM.getVMStatus()
-        .then(AzureVM.determineVMStatus);
+    const vmStatus = await AzureVM.getVMStatus();
 
     if (vmStatus !== AzureVM.Status.Started) {
         msg.reply(vmNotStartedResponses[vmStatus] || Messages.failedToGetStatus);
@@ -34,4 +33,3 @@ statusCommand.command = 'status';
 statusCommand.helpText = Messages.helpText.status;
 
 module.exports = statusCommand;
-require('./all').registerCommand(statusCommand);

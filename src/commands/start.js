@@ -6,7 +6,6 @@ const Messages = require('../messages');
  */
 function startCommand(msg) {
     return AzureVM.getVMStatus()
-        .then(AzureVM.determineVMStatus)
         .then(status => {
             if (status !== AzureVM.Status.Stopped) {
                 msg.reply(Messages.cantStartInvalidStatus(status));
@@ -23,4 +22,3 @@ startCommand.command = 'start';
 startCommand.helpText = Messages.helpText.start;
 
 module.exports = startCommand;
-require('./all').registerCommand(startCommand);
