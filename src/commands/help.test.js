@@ -10,9 +10,8 @@ hiddenCommand.command = 'hidden';
 hiddenCommand.helpText = "This is a hidden command";
 hiddenCommand.hidden = true;
 
-describe(help.name, function () {
-
-    it("should show help and hide hidden commands", function () {
+describe(help.name, function() {
+    it("should show help and hide hidden commands", function() {
         jest.mock('./all');
         const allCommands = require('./all');
         allCommands.push(fakeCommand);
@@ -27,5 +26,4 @@ describe(help.name, function () {
         const call = msg.reply.mock.calls[0];
         expect(call[0]).toBe(expectedMsg);
     });
-
 });

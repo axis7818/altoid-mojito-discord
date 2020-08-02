@@ -21,8 +21,8 @@ function rollOneDice() {
 }
 
 function rollBothDice() {
-    let dice1 = 10 * rollOneDice();
-    let dice2 = rollOneDice();
-    let result = dice1 === 0 && dice2 === 0 ? 100 : dice1 + dice2;
+    const dice1 = 10 * rollOneDice();
+    const dice2 = rollOneDice();
+    const result = dice1 === 0 && dice2 === 0 ? 100 : dice1 + dice2;
     return result;
 }

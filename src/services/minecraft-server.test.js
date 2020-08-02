@@ -3,12 +3,13 @@ jest.mock('mcstatus');
 const McStatus = require('mcstatus');
 const MinecraftServer = require('./minecraft-server');
 
-describe('minecraft-server', function () {
-
-    describe('getStatus()', function () {
-
-        it("should return the server status", async function () {
-            McStatus.checkStatus = jest.fn().mockResolvedValue({ players: 3, max_players: 20 });
+describe('minecraft-server', function() {
+    describe('getStatus()', function() {
+        it('should return the server status', async function() {
+            McStatus.checkStatus = jest.fn().mockResolvedValue({
+                players: 3,
+                max_players: 20,
+            });
 
             const status = await MinecraftServer.getStatus();
 
@@ -19,9 +20,11 @@ describe('minecraft-server', function () {
         });
 
         const unavailableErrors = ['ETIMEDOUT', 'ECONNREFUSED'];
-        unavailableErrors.forEach(err => {
-            it(`should handle ${err} as unavailable`, async function () {
-                McStatus.checkStatus = jest.fn().mockRejectedValue({ code: err });
+        unavailableErrors.forEach((err) => {
+            it(`should handle ${err} as unavailable`, async function() {
+                McStatus.checkStatus = jest.fn().mockRejectedValue({
+                    code: err,
+                });
 
                 const status = await MinecraftServer.getStatus();
 
@@ -31,7 +34,5 @@ describe('minecraft-server', function () {
                 expect(status.maxPlayers).toBe(0);
             });
         });
-
     });
-
 });

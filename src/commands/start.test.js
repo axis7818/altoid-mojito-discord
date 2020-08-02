@@ -6,9 +6,8 @@ const Status = jest.requireActual('../services/azure-vm').Status;
 
 const start = require('./start');
 
-describe(start.name, function () {
-
-    it("should start the VM if it is stopped", async function () {
+describe(start.name, function() {
+    it("should start the VM if it is stopped", async function() {
         const msg = { reply: jest.fn() };
         MockAzureVM.getVMStatus = jest.fn().mockResolvedValue(Status.Stopped);
         MockAzureVM.startVM = jest.fn().mockResolvedValue();
@@ -24,7 +23,7 @@ describe(start.name, function () {
 
     const blockedStatuses = [Status.Started, Status.Starting, Status.Stopping, Status.Unknown];
     blockedStatuses.forEach(status => {
-        it(`should not start the VM if it is ${status}`, async function () {
+        it(`should not start the VM if it is ${status}`, async function() {
             const msg = { reply: jest.fn() };
             MockAzureVM.getVMStatus = jest.fn().mockResolvedValue(status);
             MockAzureVM.startVM = jest.fn();
@@ -37,5 +36,4 @@ describe(start.name, function () {
             expect(msg.reply).toHaveBeenCalledWith(`⌛️ server-name cannot be started right now because it is **${status}**`);
         });
     });
-
 });

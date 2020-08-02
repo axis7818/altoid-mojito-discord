@@ -4,8 +4,8 @@ const Messages = require('../messages');
 
 const currentVersion = require('../../package.json').version;
 
-describe(version.name, function () {
-    it("should show the version number", function () {
+describe(version.name, function() {
+    it("should show the version number", function() {
         const msg = { reply: jest.fn() };
 
         version(msg);

@@ -9,9 +9,8 @@ const MockMinecraftServer = require('../services/minecraft-server');
 
 const stop = require('./stop');
 
-describe(stop.name, function () {
-
-    it("should stop the server if it is running and nobody is logged in", async function () {
+describe(stop.name, function() {
+    it("should stop the server if it is running and nobody is logged in", async function() {
         const msg = { reply: jest.fn() };
         MockAzureVM.getVMStatus = jest.fn().mockResolvedValue(Status.Started);
         MockAzureVM.stopVM = jest.fn().mockResolvedValue();
@@ -29,7 +28,7 @@ describe(stop.name, function () {
 
     const blockedStatuses = [Status.Starting, Status.Stopped, Status.Stopping, Status.Unknown];
     blockedStatuses.forEach(status => {
-        it(`should not stop the VM if it is ${status}`, async function () {
+        it(`should not stop the VM if it is ${status}`, async function() {
             const msg = { reply: jest.fn() };
             MockAzureVM.getVMStatus = jest.fn().mockResolvedValue(status);
             MockAzureVM.stopVM = jest.fn().mockResolvedValue();
@@ -45,7 +44,7 @@ describe(stop.name, function () {
         });
     });
 
-    it("should not stop the VM if anyone is logged in", async function () {
+    it("should not stop the VM if anyone is logged in", async function() {
         const msg = { reply: jest.fn() };
         MockAzureVM.getVMStatus = jest.fn().mockResolvedValue(Status.Started);
         MockAzureVM.stopVM = jest.fn().mockResolvedValue();
@@ -59,5 +58,4 @@ describe(stop.name, function () {
         expect(msg.reply).toHaveBeenCalledTimes(1);
         expect(msg.reply).toHaveBeenCalledWith('🐿 Looks like there are 1 hooligan(s) playing, it isn\'t polite to stop server-name while others are using it.');
     });
-
 });

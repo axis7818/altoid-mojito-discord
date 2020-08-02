@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nodemon --inspect src/index.js",
     "test": "jest --silent",
+    "lint": "eslint ./src/**/*.js",
     "docker:build": "./scripts/docker-build.sh",
     "docker:push": "./scripts/docker-push.sh",
     "deploy": "./scripts/docker-build.sh && ./scripts/docker-push.sh && az container restart -g direwolf-server -n altoid-mojito-discord"
@@ -19,6 +20,13 @@
     "ms-rest-azure": "^3.0.0"
   },
   "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "jest": "^26.2.2",
     "nodemon": "^2.0.4"
   }

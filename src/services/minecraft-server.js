@@ -4,8 +4,14 @@ const McStatus = require('mcstatus');
 const options = {
     host: config.SERVER_URL,
     port: config.SERVER_PORT,
-}
+};
 
+/**
+ * Get the status of the minecraft server.
+ * This includes whether the server is online,
+ * number of logged in players, and the maximum
+ * allowed number of players.
+ */
 async function getStatus() {
     try {
         const status = await McStatus.checkStatus(options);
@@ -16,7 +22,9 @@ async function getStatus() {
         };
         return result;
     } catch (error) {
-        if (error && (error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED')) {
+        const offline = error &&
+            (error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED');
+        if (offline) {
             return {
                 online: false,
                 players: 0,
@@ -28,4 +36,6 @@ async function getStatus() {
     }
 }
 
-module.exports = { getStatus };
+module.exports = {
+    getStatus,
+};

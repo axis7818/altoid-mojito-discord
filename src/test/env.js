@@ -14,6 +14,6 @@ const unitTestEnv = {
     ALTOIDMOJITO_MINECRAFT_SERVER_PORT: '25565',
 };
 
-for (const key in unitTestEnv) {
+for (const key of Object.keys(unitTestEnv)) {
     process.env[key] = unitTestEnv[key];
 }

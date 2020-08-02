@@ -9,8 +9,7 @@ const MockMinecraftServer = require('../services/minecraft-server');
 
 const statusCommand = require('./status');
 
-describe(statusCommand.name, function () {
-
+describe(statusCommand.name, function() {
     const vmNotStartedStatuses = [
         { status: Status.Stopped, expectedResponse: '💤 server-name is not running at the moment. Feel free to start it with the **start** command!' },
         { status: Status.Stopping, expectedResponse: '🟡 server-name is stopping. Please wait a few minutes before starting it up again.' },
@@ -18,7 +17,7 @@ describe(statusCommand.name, function () {
         { status: Status.Unknown, expectedResponse: '🤔 Sorry, I cannot determine the status of the server-name server...' },
     ];
     vmNotStartedStatuses.forEach(({ status, expectedResponse }) => {
-        it(`should respond when the vm is ${status} and not check the minecraft server`, async function () {
+        it(`should respond when the vm is ${status} and not check the minecraft server`, async function() {
             const msg = { reply: jest.fn() };
             MockAzureVM.getVMStatus = jest.fn().mockResolvedValue(status);
             MockMinecraftServer.getStatus = jest.fn();
@@ -33,7 +32,7 @@ describe(statusCommand.name, function () {
         });
     });
 
-    it("should respond that the server is ready", async function () {
+    it("should respond that the server is ready", async function() {
         const msg = { reply: jest.fn() };
         MockAzureVM.getVMStatus = jest.fn().mockResolvedValue(Status.Started);
         MockMinecraftServer.getStatus = jest.fn().mockResolvedValue({ online: true, players: 0, maxPlayers: 20 });
@@ -48,7 +47,7 @@ describe(statusCommand.name, function () {
         expect(msg.reply).toHaveBeenNthCalledWith(3, '✅ It looks like server-name is up and running. You can connect to the server at minecraft-server-url.');
     });
 
-    it("should respond that the server is ready and people are logged in", async function () {
+    it("should respond that the server is ready and people are logged in", async function() {
         const msg = { reply: jest.fn() };
         MockAzureVM.getVMStatus = jest.fn().mockResolvedValue(Status.Started);
         MockMinecraftServer.getStatus = jest.fn().mockResolvedValue({ online: true, players: 2, maxPlayers: 20 });

@@ -2,11 +2,14 @@ const msRestAzure = require('ms-rest-azure');
 const ComputeManagementClient = require('azure-arm-compute');
 const botConfig = require('../config');
 
+/**
+ * Get the Status of the VM as a string enum.
+ */
 async function getVMStatus() {
-    console.log("Getting VM status");
+    console.log('Getting VM status');
     const config = getConfig();
 
-    const vm = await getClient().then(computeClient => {
+    const vm = await getClient().then((computeClient) => {
         const rg = config['RESOURCE_GROUP'];
         const vm = config['VM_NAME'];
         console.log(`Getting Virtual Machine Information (rg=${rg}, vm=${vm})`);
@@ -17,8 +20,8 @@ async function getVMStatus() {
 }
 
 function startVM() {
-    console.log("Starting VM");
-    return getClient().then(computeClient => {
+    console.log('Starting VM');
+    return getClient().then((computeClient) => {
         const rg = config['RESOURCE_GROUP'];
         const vm = config['VM_NAME'];
         console.log(`Starting Virtual Machine (rg=${rg}, vm=${vm})`);
@@ -27,8 +30,8 @@ function startVM() {
 }
 
 function stopVM() {
-    console.log("Stopping VM");
-    return getClient().then(computeClient => {
+    console.log('Stopping VM');
+    return getClient().then((computeClient) => {
         const rg = config['RESOURCE_GROUP'];
         const vm = config['VM_NAME'];
         console.log(`Stopping Virtual Machine (rg=${rg}, vm=${vm})`);
@@ -53,7 +56,7 @@ function getClient() {
     }
 
     const config = getConfig();
-    console.log("Logging in to Azure with Service Principal");
+    console.log('Logging in to Azure with Service Principal');
 
     return new Promise((resolve, reject) => {
         msRestAzure.loginWithServicePrincipalSecret(
@@ -63,9 +66,8 @@ function getClient() {
             (err, credentials) => {
                 if (err) {
                     reject(err);
-                }
-                else {
-                    console.log("Creating ComputeManagementClient");
+                } else {
+                    console.log('Creating ComputeManagementClient');
                     computeClient = new ComputeManagementClient(credentials, config['SUBSCRIPTION_ID']);
                     resolve(computeClient);
                 }
@@ -74,7 +76,7 @@ function getClient() {
     });
 }
 
-const Status = { Started: "started", Starting: "starting", Stopped: "stopped", Stopping: "stopping", Unknown: "unknown" };
+const Status = { Started: 'started', Starting: 'starting', Stopped: 'stopped', Stopping: 'stopping', Unknown: 'unknown' };
 
 const PowerStatePrefix = 'PowerState';
 const PowerStateToStatus = {
@@ -85,14 +87,14 @@ const PowerStateToStatus = {
 };
 
 function determineVMStatus(vm) {
-    console.log("Determining the VM status");
+    console.log('Determining the VM status');
     if (!vm.instanceView || !vm.instanceView.statuses) {
         return Status.Unknown;
     }
 
     const statuses = vm.instanceView.statuses;
 
-    const powerStatus = statuses.find(s => s.code.startsWith(PowerStatePrefix));
+    const powerStatus = statuses.find((s) => s.code.startsWith(PowerStatePrefix));
     if (!powerStatus) {
         return Status.Unknown;
     }
