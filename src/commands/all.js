@@ -6,6 +6,7 @@ const commands = [
 	require('./status'),
 	require('./stop'),
 	require('./roll4chub'),
+	require('./risk'),
 ];
 
 module.exports = commands;
