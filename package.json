@@ -4,6 +4,7 @@
 	"author": "axis7818@gmail.com",
 	"license": "MIT",
 	"description": "A discord bot for managing the AltoidMojito Minecraft server.",
+	"engines": { "node": ">=0.12" },
 	"scripts": {
 		"start": "nodemon --inspect src/index.js",
 		"test": "jest --silent",

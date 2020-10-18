@@ -34,6 +34,7 @@ module.exports = {
 		status: "Shows the current status of AltoidMojito",
 		start: `Start ${config.SERVER_NAME}. This can only be done if ${config.SERVER_NAME} is stopped.`,
 		stop: `Stop ${config.SERVER_NAME}. This can only be done if ${config.SERVER_NAME} is started.`,
+		ror2Survivor: `Roll a random Risk of Rain 2 survivor with loadout.`,
 		help: "Shows this help message",
 		version: `Shows AltoidMojito's version number`,
 	},
