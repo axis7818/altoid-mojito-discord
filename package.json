@@ -4,7 +4,9 @@
 	"author": "axis7818@gmail.com",
 	"license": "MIT",
 	"description": "A discord bot for managing the AltoidMojito Minecraft server.",
-	"engines": { "node": ">=0.12" },
+	"engines": {
+		"node": ">=0.12"
+	},
 	"scripts": {
 		"start": "nodemon --inspect src/index.js",
 		"test": "jest --silent",
@@ -15,6 +17,7 @@
 	},
 	"dependencies": {
 		"azure-arm-compute": "^10.0.0",
+		"canvas": "^2.6.1",
 		"discord.js": "^12.2.0",
 		"dotenv": "^8.2.0",
 		"mcstatus": "^1.0.1",

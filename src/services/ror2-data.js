@@ -143,10 +143,78 @@ module.exports = {
 			colors: ["Default", "Admiral"],
 		},
 	],
+
 	items: [
 		{
 			name: "Dio's Best Friend",
 			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/dc/Dio%27s_Best_Friend.png/revision/latest/scale-to-width-down/128',
+		},
+	],
+
+	artifacts: [
+		{
+			name: "Artifact of Chaos",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/a/ad/Artifact_of_Chaos.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Command",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/3/3a/Artifact_of_Command.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Death",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/5a/Artifact_of_Death.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Dissonance",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/87/Artifact_of_Dissonance.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Enigma",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/ed/Artifact_of_Enigma.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Evolution",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fd/Artifact_of_Evolution.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Frailty",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/12/Artifact_of_Frailty.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Glass",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/e/e1/Artifact_of_Glass.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Honor",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c1/Artifact_of_Honor.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Kin",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/54/Artifact_of_Kin.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Metamorphosis",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/f1/Artifact_of_Metamorphosis.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Sacrifice",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/26/Artifact_of_Sacrifice.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Soul",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/9/9a/Artifact_of_Soul.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Spite",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/2/26/Artifact_of_Spite.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Swarms",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/c/c8/Artifact_of_Swarms.png/revision/latest/scale-to-width-down/64',
+		},
+		{
+			name: "Artifact of Vengeance",
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/d/d8/Artifact_of_Vengeance.png/revision/latest/scale-to-width-down/64',
 		},
 	],
 };
