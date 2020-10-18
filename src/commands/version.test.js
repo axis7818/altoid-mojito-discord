@@ -5,12 +5,12 @@ const Messages = require('../messages');
 const currentVersion = require('../../package.json').version;
 
 describe(version.name, function() {
-    it("should show the version number", function() {
-        const msg = { reply: jest.fn() };
+	it("should show the version number", function() {
+		const msg = { reply: jest.fn() };
 
-        version(msg);
+		version(msg);
 
-        expect(msg.reply.mock.calls).toHaveLength(1);
-        expect(msg.reply.mock.calls[0][0]).toBe(Messages.showVersion(currentVersion));
-    });
+		expect(msg.reply.mock.calls).toHaveLength(1);
+		expect(msg.reply.mock.calls[0][0]).toBe(Messages.showVersion(currentVersion));
+	});
 });
