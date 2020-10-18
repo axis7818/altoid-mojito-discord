@@ -1,4 +1,4 @@
 {
-    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false
+	"javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false
 }

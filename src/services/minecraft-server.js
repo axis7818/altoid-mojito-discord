@@ -2,8 +2,8 @@ const config = require('../config').MINECRAFT;
 const McStatus = require('mcstatus');
 
 const options = {
-    host: config.SERVER_URL,
-    port: config.SERVER_PORT,
+	host: config.SERVER_URL,
+	port: config.SERVER_PORT,
 };
 
 /**
@@ -13,29 +13,29 @@ const options = {
  * allowed number of players.
  */
 async function getStatus() {
-    try {
-        const status = await McStatus.checkStatus(options);
-        const result = {
-            online: true,
-            players: status.players,
-            maxPlayers: status.max_players,
-        };
-        return result;
-    } catch (error) {
-        const offline = error &&
+	try {
+		const status = await McStatus.checkStatus(options);
+		const result = {
+			online: true,
+			players: status.players,
+			maxPlayers: status.max_players,
+		};
+		return result;
+	} catch (error) {
+		const offline = error &&
             (error.code === 'ETIMEDOUT' || error.code === 'ECONNREFUSED');
-        if (offline) {
-            return {
-                online: false,
-                players: 0,
-                maxPlayers: 0,
-            };
-        } else {
-            throw error;
-        }
-    }
+		if (offline) {
+			return {
+				online: false,
+				players: 0,
+				maxPlayers: 0,
+			};
+		} else {
+			throw error;
+		}
+	}
 }
 
 module.exports = {
-    getStatus,
+	getStatus,
 };
