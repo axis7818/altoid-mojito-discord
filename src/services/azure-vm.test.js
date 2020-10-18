@@ -14,10 +14,10 @@ const AzureVM = require('./azure-vm');
 describe('azure-vm', function() {
 	describe('getVMStatus()', function() {
 		/**
-         * Mock the call to get a Virtual Machine.
-         * @param {*} vm
-         * @return {*} mock function
-         */
+		 * Mock the call to get a Virtual Machine.
+		 * @param {*} vm
+		 * @return {*} mock function
+		 */
 		function mockComputeManagementClientVirtualMachinesGet(vm) {
 			const mockGet = jest.fn().mockReturnValue(vm);
 			ComputeManagementClient.ComputeManagementClient.prototype.virtualMachines = {
@@ -54,7 +54,7 @@ describe('azure-vm', function() {
 		}
 
 		it(`should return ${AzureVM.Status.Unknown} for unhandled power states`, async function() {
-			const mockGet = mock_ComputeManagementClient_virtualMachines_get({
+			const mockGet = mockComputeManagementClientVirtualMachinesGet({
 				instanceView: {
 					statuses: [
 						{
