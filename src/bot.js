@@ -28,10 +28,10 @@ function start(TOKEN) {
 		try {
 			const result = c(msg);
 			if (result) {
-				result.catch(errorHanlder);
+				result.catch((err) => errorHanlder(msg, err));
 			}
 		} catch (err) {
-			errorHanlder(err);
+			errorHanlder(msg, err);
 		}
 	});
 
@@ -44,7 +44,7 @@ function start(TOKEN) {
 
 module.exports = { start };
 
-function errorHanlder(err) {
+function errorHanlder(msg, err) {
 	console.error(err);
 	msg.reply(Messages.fallbackErrorMessage);
 }
