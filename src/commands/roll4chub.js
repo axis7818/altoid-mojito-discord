@@ -1,11 +1,6 @@
 
 function roll4ChubCommand(msg) {
-	const isMarty = msg.author.id === '190268236263063553';
-	let chub = rollBothDice();
-	while (isMarty && chub > 42) {
-		chub = rollBothDice();
-	}
-
+	const chub = rollBothDice();
 	console.log(`${msg.author.username}'s chub is ${chub}`);
 	msg.reply(`Your chub is ${chub}.`);
 }
