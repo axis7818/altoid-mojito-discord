@@ -1,4 +1,3 @@
-
 module.exports = {
 	wiki: {
 		survivorsUrl: 'https://riskofrain2.gamepedia.com/Survivors',
@@ -40,7 +39,7 @@ module.exports = {
 				'primary-2': ["Auto-Nailgun", "Rebar Puncher", "Scrap Launcher", "Power-Saw"],
 				'secondary': ["Blast Canister"],
 				'utility': ["Transport Mode"],
-				'special': ["Retool"],
+				'special': ["Retool", "Power Mode"],
 			},
 			colors: ["Default", "Janitor"],
 		},
@@ -66,7 +65,7 @@ module.exports = {
 				'passive': ["Cybernetic Enhancements"],
 				'primary': ["Laser Sword"],
 				'secondary': ["Whirlwind", "Rising Thunder"],
-				'utility': ["Blinding Assault"],
+				'utility': ["Blinding Assault", "Focused Assault"],
 				'special': ["Eviscerate", "Slicing Winds"],
 			},
 			colors: ["Default", "Oni"],
@@ -87,7 +86,7 @@ module.exports = {
 		},
 
 		{
-			name: "Rex",
+			name: "REX",
 			wikiUrl: 'https://riskofrain2.gamepedia.com/REX',
 			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/7/74/REX.png/revision/latest/scale-to-width-down/128',
 			skills: {
@@ -95,7 +94,7 @@ module.exports = {
 				'primary': ["DIRECTIVE: Inject"],
 				'secondary': ["Seed Barrage", "DIRECTIVE: Drill"],
 				'utilty': ["DIRECTIVE: Disperse", "Bramble Volley"],
-				'special': ["Tangling Growth"],
+				'special': ["Tangling Growth", "DIRECTIVE: Harvest"],
 			},
 			colors: ["Default", "Smoothie"],
 		},
@@ -109,7 +108,7 @@ module.exports = {
 				'primary': ["Kuckleboom"],
 				'secondary': ["Grapple Fist", "Spiked Fist"],
 				'utility': ["Charged Gauntlet", "Thunder Gauntlet"],
-				'special': ["M551 Pylon"],
+				'special': ["M551 Pylon", "Thunderslam"],
 			},
 			colors: ["Default", "Classic"],
 		},
@@ -136,11 +135,66 @@ module.exports = {
 				'passive': ["Defensive Microbots"],
 				'primary': ["Vulcan Shotgun"],
 				'secondary': ["Power Tazer"],
-				'utility': ["Orbital Probe"],
+				'utility': ["Orbital Probe", "OGM-72 'DIABLO' Strike"],
 				'special-1': ["Beacon: Healing", "Beacon: Shocking", "Beacon: Resupply", "Beacon: Hacking"],
 				'special-2': ["Beacon: Healing", "Beacon: Shocking", "Beacon: Resupply", "Beacon: Hacking"],
 			},
 			colors: ["Default", "Admiral"],
+		},
+
+		{
+			name: "Bandit",
+			wikiUrl: 'https://riskofrain2.fandom.com/wiki/Bandit',
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/1/1f/Bandit.png/revision/latest/scale-to-width-down/128',
+			skills: {
+				'passive': ["Backstab"],
+				'primary': ["Burst", "Blast"],
+				'secondary': ["Serrated Dagger", "Serrated Shiv"],
+				'utility': ["Smoke Bomb"],
+				'special': ["Lights Out", "Desperado"],
+			},
+			colors: ["Default", "Chilly"],
+		},
+
+		{
+			name: "Railgunner",
+			wikiUrl: 'https://riskofrain2.fandom.com/wiki/Railgunner',
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/f/fe/Railgunner.png/revision/latest/scale-to-width-down/128',
+			skills: {
+				'passive': ["Magnetic Accelerator"],
+				'primary': ["XQR Smart Round System"],
+				'secondary': ["M99 Sniper", "HH44 Marksman"],
+				'utility': ["Concussion Device", "Polar Field Device"],
+				'special': ["Supercharge", "Cryocharge"],
+			},
+			colors: ["Default", "Marksman"],
+		},
+
+		{
+			name: "Void Fiend",
+			wikiUrl: 'https://riskofrain2.fandom.com/wiki/Void_Fiend',
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/5/5b/Void_Fiend.png/revision/latest/scale-to-width-down/128',
+			skills: {
+				'passive': ["Void Corruption"],
+				'primary': ["Drown"],
+				'secondary': ["Flood"],
+				'utility': ["Trespass"],
+				'special': ["Suppress"],
+			},
+			colors: ["Default", "Purified"],
+		},
+
+		{
+			name: "Heretic",
+			wikiUrl: 'https://riskofrain2.fandom.com/wiki/Heretic',
+			imageUrl: 'https://static.wikia.nocookie.net/riskofrain2_gamepedia_en/images/8/81/Heretic.png/revision/latest/scale-to-width-down/128',
+			skills: {
+				'primary': ["Hungering Gaze"],
+				'secondary': ["Slicing Maelstrom"],
+				'utility': ["Shadowfade"],
+				'special': ["Ruin"],
+			},
+			colors: ["Default"],
 		},
 	],
 
