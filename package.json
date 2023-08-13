@@ -16,12 +16,9 @@
 		"deploy": "./scripts/docker-build.sh && ./scripts/docker-push.sh && az container restart -g direwolf-server -n altoid-mojito-discord"
 	},
 	"dependencies": {
-		"azure-arm-compute": "^10.0.0",
 		"canvas": "^2.11.2",
 		"discord.js": "^12.5.3",
-		"dotenv": "^8.6.0",
-		"mcstatus": "^1.0.1",
-		"ms-rest-azure": "^3.0.2"
+		"dotenv": "^8.6.0"
 	},
 	"devDependencies": {
 		"eslint": "^7.32.0",

@@ -3,28 +3,9 @@ const { isObject } = require('util');
 
 const prefix = 'ALTOIDMOJITO';
 const config = {
-
 	// Discord Bot
 	TOKEN: null,
 	CLIENT_ID: null,
-	SERVER_NAME: null,
-
-	// Azure
-	AZURE: {
-		SUBSCRIPTION_ID: null,
-		CLIENT_ID: null,
-		APPLICATION_SECRET: null,
-		DOMAIN: null,
-		RESOURCE_GROUP: null,
-		VM_NAME: null,
-	},
-
-	// Minecraft
-	MINECRAFT: {
-		SERVER_URL: null,
-		SERVER_PORT: '25565',
-	},
-
 };
 
 function parseConfig(config, prefix) {
