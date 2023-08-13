@@ -29,8 +29,6 @@ ALTOIDMOJITO_AZURE_APPLICATION_SECRET='<azure application secret>'
 ALTOIDMOJITO_AZURE_DOMAIN='<azure domain>'
 ALTOIDMOJITO_AZURE_RESOURCE_GROUP='<resource group name>'
 ALTOIDMOJITO_AZURE_VM_NAME='<vm name>'
-ALTOIDMOJITO_MINECRAFT_SERVER_URL='<minecraft server hostname>'
-ALTOIDMOJITO_MINECRAFT_SERVER_PORT='<minecraft server port>' # Defaults to 25565
 ```
 
 ### How To Get Values For Environment Variables
@@ -44,5 +42,3 @@ ALTOIDMOJITO_MINECRAFT_SERVER_PORT='<minecraft server port>' # Defaults to 25565
 - **ALTOIDMOJITO_AZURE_DOMAIN**: The Azure tenant where the service principal lives.
 - **ALTOIDMOJITO_AZURE_RESOURCE_GROUP**: The resource group containing the Minecraft VM.
 - **ALTOIDMOJITO_AZURE_VM_NAME**: The name of the VM running the minecraft server.
-- **ALTOIDMOJITO_MINECRAFT_SERVER_URL**: The hostname for the minecraft server. This is what players would use to log in. Contact the server administrator for this value.
-- **ALTOIDMOJITO_MINECRAFT_SERVER_PORT**: Optional override. Contact the server administrator for this value.

@@ -10,8 +10,6 @@ const unitTestEnv = {
 	ALTOIDMOJITO_AZURE_DOMAIN: 'azure-domain',
 	ALTOIDMOJITO_AZURE_RESOURCE_GROUP: 'azure-resource-group',
 	ALTOIDMOJITO_AZURE_VM_NAME: 'azure-vm-name',
-	ALTOIDMOJITO_MINECRAFT_SERVER_URL: 'minecraft-server-url',
-	ALTOIDMOJITO_MINECRAFT_SERVER_PORT: '25565',
 };
 
 for (const key of Object.keys(unitTestEnv)) {
