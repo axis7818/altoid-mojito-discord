@@ -1,4 +1,3 @@
-
 const commands = [
 	require('./help'),
 	require('./version'),
