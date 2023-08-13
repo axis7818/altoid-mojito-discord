@@ -1,9 +1,9 @@
 {
 	"name": "altoidmojito",
-	"version": "1.5.0",
+	"version": "2.0.0",
 	"author": "axis7818@gmail.com",
 	"license": "MIT",
-	"description": "A discord bot for managing the AltoidMojito Minecraft server.",
+	"description": "The Altoid Mojito discord bot.",
 	"engines": {
 		"node": ">=0.12"
 	},
@@ -17,21 +17,21 @@
 	},
 	"dependencies": {
 		"azure-arm-compute": "^10.0.0",
-		"canvas": "^2.6.1",
-		"discord.js": "^12.2.0",
-		"dotenv": "^8.2.0",
+		"canvas": "^2.11.2",
+		"discord.js": "^12.5.3",
+		"dotenv": "^8.6.0",
 		"mcstatus": "^1.0.1",
-		"ms-rest-azure": "^3.0.0"
+		"ms-rest-azure": "^3.0.2"
 	},
 	"devDependencies": {
-		"eslint": "^7.6.0",
+		"eslint": "^7.32.0",
 		"eslint-config-google": "^0.14.0",
 		"eslint-config-standard": "^14.1.1",
-		"eslint-plugin-import": "^2.22.0",
+		"eslint-plugin-import": "^2.28.0",
 		"eslint-plugin-node": "^11.1.0",
-		"eslint-plugin-promise": "^4.2.1",
-		"eslint-plugin-standard": "^4.0.1",
-		"jest": "^26.2.2",
-		"nodemon": "^2.0.4"
+		"eslint-plugin-promise": "^4.3.1",
+		"eslint-plugin-standard": "^4.1.0",
+		"jest": "^26.6.3",
+		"nodemon": "^2.0.22"
 	}
 }
