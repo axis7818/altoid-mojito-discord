@@ -13,7 +13,7 @@
 		"lint": "eslint ./src/**/*.js"
 	},
 	"dependencies": {
-		"canvas": "^2.11.2",
+		"canvas": "^3.2.1",
 		"discord.js": "^12.5.3",
 		"dotenv": "^8.6.0"
 	},
